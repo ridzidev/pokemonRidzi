@@ -1,0 +1,37 @@
+R_DEF: Internal format may change without notice
+local
+color black
+color purple_200
+color purple_500
+color purple_700
+color teal_200
+color teal_700
+color white
+drawable custom_button_background
+drawable ic_close
+drawable ic_launcher_background
+drawable ic_launcher_foreground
+drawable poke
+id closeButton
+id fragment_container
+id list
+id name
+id openFragment2Button
+id pokemonDataWebView
+id pokemonImage
+id pokemonImageWebView
+id pokemonNameTextView
+id searchView
+id url
+layout activity_main
+layout custom_list_item
+layout fragment_fragment1
+layout fragment_fragment2
+layout fragment_pokemon_detail_dialog
+layout list_item
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+style Theme.Pokemon1
+xml backup_rules
+xml data_extraction_rules
