@@ -1,0 +1,60 @@
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Content of your dialog -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Close button -->
+        <ImageView
+            android:id="@+id/closeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="16dp"
+            android:src="@drawable/ic_close"
+            android:clickable="true" />
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@+id/closeButton"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Display the Pokemon's name -->
+            <TextView
+                android:id="@+id/pokemonNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:text="Pokemon Name"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Display other details, such as image, type, etc., as needed -->
+            <!-- Example: Displaying a WebView for the Pokemon's image -->
+            <!-- Inside your dialog layout -->
+            <WebView
+                android:id="@+id/pokemonImageWebView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" /> <!-- This is for the SVG image -->
+
+            <WebView
+                android:id="@+id/pokemonDataWebView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" /> <!-- This is for JSON data -->
+
+            <!-- Add a ScrollView to contain the ListView and other views -->
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>
