@@ -1,0 +1,30 @@
+[
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\custom_list_item.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\custom_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\fragment_fragment2.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\fragment_fragment2.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\list_item.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\fragment_fragment1.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\fragment_fragment1.xml"
+    },
+    {
+        "merged": "com.ridzi.pokemon1.app-mergeDebugResources-31:/layout/fragment_pokemon_detail_dialog.xml",
+        "source": "com.ridzi.pokemon1.app-main-34:/layout/fragment_pokemon_detail_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-mergeDebugResources-31:\\layout\\fragment_pokemon_detail_dialog.xml",
+        "source": "C:\\Users\\Alfa.Ridzi\\.gradle\\daemon\\7.3.3\\com.ridzi.pokemon1.app-main-34:\\layout\\fragment_pokemon_detail_dialog.xml"
+    }
+]
