@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- SearchView with custom colors -->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Pokémon" />
+
+    <!-- ListView with a custom divider color and background -->
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="#FFC107"
+        android:dividerHeight="1dp"
+        android:background="#F5F5F5"
+        android:padding="8dp"
+        android:clickable="true"
+        />
+
+    <!-- Add other views and UI elements specific to Fragment2 here -->
+
+</LinearLayout>
