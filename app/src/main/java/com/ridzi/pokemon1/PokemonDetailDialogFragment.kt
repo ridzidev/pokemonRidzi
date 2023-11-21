@@ -9,6 +9,7 @@ import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import java.net.URL
 
 class PokemonDetailDialogFragment : DialogFragment() {
 
@@ -30,22 +31,22 @@ class PokemonDetailDialogFragment : DialogFragment() {
 
         // Find the TextView and WebViews by their IDs
         val pokemonNameTextView = view.findViewById<TextView>(R.id.pokemonNameTextView)
-        val pokemonImageWebView = view.findViewById<WebView>(R.id.pokemonImageWebView)
+//        val pokemonImageWebView = view.findViewById<WebView>(R.id.pokemonImageWebView)
         val pokemonDataWebView = view.findViewById<WebView>(R.id.pokemonDataWebView)
 
         // Display the Pokemon's name in the TextView
         pokemonNameTextView.text = pokemonName
 
-        val pokemonImageUrl =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/$pokemonValue.svg"
+//        val pokemonImageUrl =
+//            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/$pokemonValue.svg"
 
         // Configure WebView settings for the image
-        val imageWebSettings: WebSettings = pokemonImageWebView.settings
-        imageWebSettings.javaScriptEnabled = true // Enable JavaScript if needed
-        imageWebSettings.domStorageEnabled = true
-
-        // Load the SVG image in the first WebView
-        pokemonImageWebView.loadUrl(pokemonImageUrl)
+//        val imageWebSettings: WebSettings = pokemonImageWebView.settings
+//        imageWebSettings.javaScriptEnabled = true // Enable JavaScript if needed
+//        imageWebSettings.domStorageEnabled = true
+//
+//        // Load the SVG image in the first WebView
+//        pokemonImageWebView.loadUrl(pokemonImageUrl)
 
         // Configure WebView settings for loading URLs
         val dataWebSettings: WebSettings = pokemonDataWebView.settings
@@ -53,8 +54,21 @@ class PokemonDetailDialogFragment : DialogFragment() {
         dataWebSettings.domStorageEnabled = true
 
         // Load the URL from the "murl" parameter into the second WebView
+
+        val url = URL(murl)
+        val pathComponents = url.path.split('/')
+
+        // Remove empty components
+        val nonEmptyComponents = pathComponents.filter { it.isNotEmpty() }
+
+        // Get the last path component
+        val lastPathComponent = nonEmptyComponents.lastOrNull()
+
+        val urlString = "https://ridzidev.github.io/pokemon/index.html?apiurl=$lastPathComponent"
+
+
         if (murl != null) {
-            pokemonDataWebView.loadUrl(murl)
+            pokemonDataWebView.loadUrl(urlString)
         }
 
         // Handle click on the close button

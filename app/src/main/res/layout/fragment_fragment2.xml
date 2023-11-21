@@ -8,13 +8,60 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+
+
     <!-- SearchView with custom colors -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- Add buttons for sorting -->
+        <Button
+            android:id="@+id/btnSortByNameAsc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="A-Z"
+            android:layout_marginEnd="4dp"
+            android:onClick="sortByNameAsc" />
+
+        <Button
+            android:id="@+id/btnSortByNameDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Z-A"
+            android:layout_marginEnd="4dp"
+            android:onClick="sortByNameDesc" />
+
+        <Button
+            android:id="@+id/btnSortByIdAsc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID ↑"
+            android:layout_marginEnd="4dp"
+            android:onClick="sortByIDAsc" />
+
+        <Button
+            android:id="@+id/btnSortByIdDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ID ↓"
+            android:onClick="sortByIDDesc" />
+    </LinearLayout>
+
+    <!-- SearchView -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:iconifiedByDefault="false"
-        app:queryHint="Search Pokémon" />
+        app:queryHint="Search Pokémon"
+        android:layout_below="@id/btnSortByIdDesc"
+        android:layout_marginTop="8dp" />
 
     <!-- ListView with a custom divider color and background -->
     <ListView
@@ -25,8 +72,10 @@
         android:dividerHeight="1dp"
         android:background="#F5F5F5"
         android:padding="8dp"
-        android:clickable="true"
-        />
+        android:layout_below="@id/searchView"
+        android:layout_marginTop="8dp"
+        android:clickable="true" />
+
 
     <!-- Add other views and UI elements specific to Fragment2 here -->
 

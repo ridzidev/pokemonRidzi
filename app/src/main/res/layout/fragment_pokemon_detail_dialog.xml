@@ -13,13 +13,20 @@
             android:id="@+id/closeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="true"
+            android:contentDescription="@string/app_name"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:src="@drawable/ic_close"
-            android:clickable="true" />
+            android:focusable="true" />
 
 
         <LinearLayout
+            android:id="@+id/la"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_below="@+id/closeButton"
@@ -27,7 +34,7 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:orientation="vertical"
-            android:padding="16dp">
+            >
 
             <!-- Display the Pokemon's name -->
             <TextView
@@ -37,18 +44,20 @@
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
                 android:text="Pokemon Name"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="28sp"
+                android:textStyle="bold"
+                />
 
             <!-- Display other details, such as image, type, etc., as needed -->
             <!-- Example: Displaying a WebView for the Pokemon's image -->
             <!-- Inside your dialog layout -->
-            <WebView
-                android:id="@+id/pokemonImageWebView"
-                android:layout_width="match_parent"
-                android:layout_height="200dp" /> <!-- This is for the SVG image -->
+            <!--            <WebView-->
+            <!--                android:id="@+id/pokemonImageWebView"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="200dp" /> &lt;!&ndash; This is for the SVG image &ndash;&gt;-->
 
             <WebView
+                android:layout_marginTop="10dp"
                 android:id="@+id/pokemonDataWebView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" /> <!-- This is for JSON data -->

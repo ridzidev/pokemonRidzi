@@ -23,11 +23,12 @@ class Fragment2 : Fragment() {
 
     private val TAG = Fragment2::class.java.simpleName
     private lateinit var pDialog: ProgressDialog
+
     private lateinit var lv: ListView
     private lateinit var searchView: SearchView
 
     // URL to get Pokémon JSON data
-    private val url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=11000"
+    private val url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000"
     private var pokemonList = ArrayList<HashMap<String, String>>()
     private val filteredPokemonList = ArrayList<HashMap<String, String>>()
 
@@ -47,9 +48,8 @@ class Fragment2 : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Initialize the ProgressDialog
-        pDialog = ProgressDialog(context)
-        pDialog.setMessage("Please wait... we collect all Pokémon for you...")
-        pDialog.setCancelable(false)
+//        pDialog = ProgressDialog(context)
+//        pDialog.setCancelable(false)
 
         // Initialize the adapter
         adapter = SimpleAdapter(
@@ -82,6 +82,58 @@ class Fragment2 : Fragment() {
 
         // Setup search functionality
         setupSearchView()
+
+        // Setup sorting button click listeners
+        val btnSortByNameAsc = view.findViewById<Button>(R.id.btnSortByNameAsc)
+        val btnSortByNameDesc = view.findViewById<Button>(R.id.btnSortByNameDesc)
+        val btnSortByIdAsc = view.findViewById<Button>(R.id.btnSortByIdAsc)
+        val btnSortByIdDesc = view.findViewById<Button>(R.id.btnSortByIdDesc)
+
+        btnSortByNameAsc.setOnClickListener { sortByNameAsc() }
+        btnSortByNameDesc.setOnClickListener { sortByNameDesc() }
+        btnSortByIdAsc.setOnClickListener { sortByIDAsc() }
+        btnSortByIdDesc.setOnClickListener { sortByIDDesc() }
+
+        showProgressDialog()
+
+
+        val totalPokemons = 1000
+        updateProgressOverTime(totalPokemons)
+    }
+
+    private fun showProgressDialog() {
+        pDialog = ProgressDialog(context)
+        pDialog.setMessage("Please wait... we are collecting 1000 Pokémon for you...")
+        pDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL)
+        pDialog.max = 100
+        pDialog.setCancelable(false)
+        pDialog.show()
+    }
+
+    private fun dismissProgressDialog() {
+        if (pDialog.isShowing) {
+            pDialog.dismiss()
+        }
+    }
+
+    private fun sortByNameAsc() {
+        pokemonList.sortBy { it["name"] }
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun sortByNameDesc() {
+        pokemonList.sortByDescending { it["name"] }
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun sortByIDAsc() {
+        pokemonList.sortBy { it["url"] }
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun sortByIDDesc() {
+        pokemonList.sortByDescending { it["url"] }
+        adapter.notifyDataSetChanged()
     }
 
 
@@ -170,11 +222,16 @@ class Fragment2 : Fragment() {
 
     private inner class FetchPokemonData : AsyncTask<Void, Void, Void>() {
 
-        override fun onPreExecute() {
-            super.onPreExecute()
-            // Showing progress dialog
-            pDialog.show()
-        }
+//        override fun onPreExecute() {
+//            super.onPreExecute()
+//            // Showing progress dialog
+//            pDialog.show()
+//        }
+
+//        private fun updateProgress(progress: Int) {
+//            pDialog.setMessage("Please wait... we are collecting Pokémon for you... $progress%")
+//            pDialog.progress = progress
+//        }
 
         override fun doInBackground(vararg params: Void): Void? {
             val httpHandler = HttpHandler()
@@ -190,6 +247,8 @@ class Fragment2 : Fragment() {
 
                     // Getting JSON Array node for results
                     val results = jsonObj.getJSONArray("results")
+
+
 
                     // Looping through all Pokémon
                     for (i in 0 until results.length()) {
@@ -213,6 +272,10 @@ class Fragment2 : Fragment() {
 
                         // Adding Pokémon data to the list
                         pokemonList.add(pokemonData)
+
+//                        val progress = ((i + 1) / results.length().toFloat() * 100).toInt()
+//                        updateProgress(progress)
+
                     }
 
                 } catch (e: JSONException) {
@@ -248,6 +311,38 @@ class Fragment2 : Fragment() {
 
             // Notify the adapter that data has changed
             adapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun updateProgressOverTime(totalPokemons: Int) {
+        val progressPerSecond = 97 / 21 // 97% over 5 seconds
+        val interval = 1000L // 1000 milliseconds (1 second)
+
+        // Looping through all Pokémon
+        for (i in 0 until totalPokemons) {
+            // Schedule a timer to update progress every second
+            Timer().schedule(object : TimerTask() {
+                override fun run() {
+                    // Calculate and update the loading progress
+                    val progress = (i + 1) * progressPerSecond
+                    updateProgress(progress.toInt())
+
+                    // Dismiss the ProgressDialog when reaching 98%
+                    if (progress >= 98) {
+                        activity?.runOnUiThread {
+                            dismissProgressDialog()
+                        }
+                        this.cancel()
+                    }
+                }
+            }, i * interval)
+        }
+    }
+
+    private fun updateProgress(progress: Int) {
+        activity?.runOnUiThread {
+            pDialog.setMessage("Please wait... we are collecting 1000 Pokémon for you... $progress%")
+            pDialog.progress = progress
         }
     }
 }
